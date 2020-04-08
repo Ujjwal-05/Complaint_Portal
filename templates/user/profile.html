@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <form action="/deleteuser" method="post">
+    {% csrf_token %}
+    <div class="content-section">
+      <div class="media">
+        <img class="rounded-circle account-img" src="{{ use }}">
+        <div class="media-body">
+          <h2 class="account-heading">{{ user.username }}</h2>
+          <p class="text-secondary">{{ user.userprofile.stream }}</p>
+            <input type="text" value={{ user.email }}>
+            <br>
+          <input class="btn btn-danger btn-sm mt-1 mb-1" type="submit"  value="Delete Account">
+        </div>
+      </div>
+      <!-- FORM HERE -->
+    </div>
+    </form>
+{% endblock content %}

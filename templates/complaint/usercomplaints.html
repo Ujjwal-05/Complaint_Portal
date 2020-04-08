@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+    <ol>
+        {% for i in comp %}
+            <li><a href={% url 'complaint-update' i.id %}>{{ i.title }}</a></li>
+        {% endfor %}
+    </ol>
+
+{% endblock %}

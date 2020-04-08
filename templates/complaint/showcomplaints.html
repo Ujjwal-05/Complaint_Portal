@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+    {% if com %}
+        {% if com.status %}
+        <h3>Type:{{ com.type}}</h3>
+        <h6>Title:{{com.title}}</h6>
+        <p>Body:{{com.problem}}</p>
+        {% else %}
+        <form method="post" action="/complaint/solvecomplaint">
+        {% csrf_token %}
+        <h3>Type:{{ com.type}}</h3>
+        <h6>Title:{{com.title}}</h6>
+        <p>Body:{{com.problem}}</p>
+         <input type="hidden" value="{{ com.id }}" name='id'>
+        <input type="submit" value="Resolved">
+        </form>
+        {% endif %}
+    {% endif %}
+
+
+
+    {% if status is -1 %}
+        <h1>Solved Problem</h1>
+    {% elif status is -2 %}
+        <h1>UnSolved Problem</h1>
+    {% elif status is -3 %}
+        <h1>Problem</h1>
+    {% endif %}
+        <ol>
+        {% for i in comp %}
+            <li><a href={% url 'showcomplaints' i.id %}>{{ i.title }}</a></li>
+        {% endfor %}
+        </ol>
+
+{% endblock %}
