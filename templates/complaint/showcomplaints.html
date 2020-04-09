@@ -13,8 +13,10 @@
         <h3>Type:{{ com.type}}</h3>
         <h6>Title:{{com.title}}</h6>
         <p>Body:{{com.problem}}</p>
+            {% if user.is_superuser %}
          <input type="hidden" value="{{ com.id }}" name='id'>
         <input type="submit" value="Resolved">
+            {% endif %}
         </form>
         {% endif %}
     {% endif %}
